@@ -22,7 +22,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="(items,index) in datas"
+            v-for="(items,index) in item"
             :key="index"
           >
             <td>{{ items.msg }}</td>
@@ -41,7 +41,7 @@ export default {
     return {
       msg: '',
       title: 'ข้อความ',
-      datas: []
+      item: []
     }
   },
   created () {
@@ -51,7 +51,7 @@ export default {
     async fetchData () {
       try {
         const url = await this.$axios.get('http://localhost:3001/getlist')
-        this.datas = url.data.data
+        this.item = url.data.data
       } catch (err) {
         console.log('error')
       }
